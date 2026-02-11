@@ -1,0 +1,353 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  display: grid;
+  place-items: center;
+}
+
+:where(*, *::before, *::after) {
+  box-sizing: border-box;
+}
+
+:root {
+  --space-1: clamp(8px, 1.8vw, 12px);
+  --space-2: clamp(12px, 2.4vw, 16px);
+  --space-3: clamp(16px, 3vw, 20px);
+  --radius: clamp(10px, 2vw, 14px);
+  --container-pad: clamp(20px, 4vw, 28px);
+  --gap: clamp(12px, 3vw, 18px);
+  --avatar-size: clamp(72px, 18vw, 104px);
+  --name-font: clamp(24px, 5vw, 32px);
+  --btn-font: clamp(16px, 2.5vw, 18px);
+  --btn-pad-y: clamp(12px, 2.4vw, 18px);
+  --btn-pad-x: clamp(14px, 2.8vw, 18px);
+  --btn-min-h: clamp(44px, 10vw, 56px);
+}
+
+main.container {
+  width: min(92vw, 560px);
+  padding: var(--container-pad);
+  border-radius: var(--radius);
+  border: 4px solid #333;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap);
+  background: #000;
+  position: relative;
+  z-index: 10;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  border: 4px solid #333;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  box-shadow: none;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.avatar span {
+  font-size: clamp(24px, 5vw, 32px);
+  text-shadow: 0 0 6px #fff, 0 0 12px rgba(255,255,255,0.8), 0 0 24px rgba(255,255,255,0.6);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.name {
+  margin: 0;
+  font-size: var(--name-font);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px #fff, 0 0 12px rgba(255,255,255,0.8), 0 0 24px rgba(255,255,255,0.6);
+}
+
+.bio {
+  margin: 0 0 10px;
+  text-align: center;
+  color: #d9d9d9;
+  text-shadow: 0 0 4px rgba(255,255,255,0.6);
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.btn {
+  display: flex;
+  width: 100%;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  min-height: var(--btn-min-h);
+  border-radius: var(--radius);
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border: 4px solid #333;
+  background: rgba(255,255,255,0.05);
+  box-shadow: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color 0.5s ease;
+  font-size: var(--btn-font);
+  line-height: 1.15;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.6vw, 10px);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(255,255,255,0.09);
+}
+
+.btn.neon-active:hover {
+  box-shadow: 0 0 18px rgba(255,255,255,0.7), inset 0 0 12px rgba(255,255,255,0.35);
+}
+
+.btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.8), inset 0 0 14px rgba(255,255,255,0.4);
+}
+
+.btn .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
+}
+
+.btn .icon svg {
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+  display: block;
+}
+
+.btn .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.btn .label {
+  display: inline-block;
+  line-height: 1.1;
+}
+
+@keyframes neonPulse {
+  from {
+    box-shadow: 0 0 8px rgba(255,255,255,0.35), inset 0 0 6px rgba(255,255,255,0.18);
+  }
+  to {
+    box-shadow: 0 0 18px rgba(255,255,255,0.7), inset 0 0 12px rgba(255,255,255,0.35);
+  }
+}
+
+@keyframes containerGlow {
+  from {
+    box-shadow: 0 0 12px rgba(255,255,255,0.35), inset 0 0 8px rgba(255,255,255,0.2);
+  }
+  to {
+    box-shadow: 0 0 26px rgba(255,255,255,0.8), inset 0 0 16px rgba(255,255,255,0.35);
+  }
+}
+
+.layout-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo-animation {
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 6vw, 64px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG Letter Styles */
+.letter-svg {
+  width: 0.8em;
+  height: 1.2em;
+  overflow: visible;
+  /* Make sure SVGs don't collapse */
+  display: inline-block;
+}
+
+.neon-text {
+  font-family: inherit;
+  font-weight: 800;
+  fill: transparent;
+  stroke: #ffffff; /* White Outline */
+  stroke-width: 2px;
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 0;
+  opacity: 0; /* Initially invisible */
+  /* Remove paint-order if it interferes, but standard stroke is centered on path */
+}
+
+/* Active State */
+.neon-text.active {
+  opacity: 1;
+  animation: dash 2s linear infinite; /* Rotating gap */
+  transition: fill-opacity 2s ease-in-out;
+  fill: url(#neon-gradient); /* Animated Gradient Fill */
+  fill-opacity: 0.6; /* Semi-Transparent initially */
+  
+  /* Add glow via drop-shadow on the SVG element or text-shadow analog */
+  /* text-shadow doesn't work on SVG text usually, use filter drop-shadow */
+  /* White glow for stroke + Blue glow for fill */
+  filter: drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 5px #4da6ff);
+}
+
+/* Filled State (after 2s) */
+.neon-text.filled {
+  stroke-dasharray: 0; /* Full stroke */
+  stroke-dashoffset: 0;
+  animation: none; /* Stop rotation */
+  fill: url(#neon-gradient); /* Keep Gradient */
+  fill-opacity: 1; /* Solid Gradient Fill */
+  /* User: "środek litery powoli zabarwił się na różowo" -> implied solid or strong glow */
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 200; /* Move by total pattern length (100+100) */
+  }
+}
+
+.falling-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: #ffffff; /* White Star */
+  border-radius: 50%;
+  box-shadow: 
+    0 0 4px #ffffff,
+    0 0 8px #ffffff,
+    0 0 12px #4da6ff; /* White core, blue glow */
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.falling-star::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to top, rgba(77, 166, 255, 0.8), rgba(77, 166, 255, 0)); /* Blue trail */
+  transform: translate(-50%, -100%);
+  transform-origin: bottom center;
+  z-index: -1;
+}
+
+/* Pure White Star Variant */
+.falling-star.white-variant {
+  box-shadow: 
+    0 0 4px #ffffff,
+    0 0 8px #ffffff,
+    0 0 12px #ffffff; /* Pure white glow */
+}
+
+.falling-star.white-variant::after {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)); /* White trail */
+}
+
+/* Background Star Particles */
+.comet-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.comet-particle.white {
+  background: white;
+  box-shadow: 0 0 4px white;
+}
+
+.comet-particle.black {
+  background: rgb(255, 255, 255);
+  border-radius: 0; /* Pixels are square */
+  z-index: 2; /* On top of white trail to create "holes" */
+}
+
+/* Neon Active States for Blocks */
+main.container.neon-active {
+  border-color: #fff;
+  box-shadow: 0 0 26px rgba(255,255,255,0.8), inset 0 0 16px rgba(255,255,255,0.35);
+}
+
+.avatar.neon-active {
+  border-color: #fff;
+  box-shadow: 0 0 18px rgba(255,255,255,0.7), inset 0 0 12px rgba(255,255,255,0.35);
+}
+
+.btn.neon-active {
+  border-color: #fff;
+  box-shadow: 0 0 18px rgba(255,255,255,0.7), inset 0 0 12px rgba(255,255,255,0.35);
+}
+
+/* Background Stars */
+.bg-star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(255, 255, 255, 0.4);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.bg-star.static {
+  animation: twinkle var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.bg-star.fading {
+  animation: fadeInOut var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
