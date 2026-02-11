@@ -3,25 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moje Linki</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Moje Social Media</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            /* ANIMOWANE TŁO */
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #00d2ff);
+            background-size: 400% 400%;
+            animation: aurora 10s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+        }
+
+        .profile-img {
+            width: 90px; height: 90px;
+            background: linear-gradient(45deg, #00d2ff, #92fe9d);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 5px; letter-spacing: 1px; }
+        p { font-size: 0.9rem; opacity: 0.7; margin-bottom: 25px; }
+
+        .links { display: flex; flex-direction: column; gap: 15px; }
+
+        .link {
+            display: block;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.03);
+            border-color: #00d2ff;
+        }
+
+        /* EFEKT POŚWIATY DLA PRZYCISKÓW */
+        .link.main {
+            background: linear-gradient(90deg, rgba(0,210,255,0.3), rgba(146,254,157,0.3));
+            border: 1px solid #00d2ff;
+        }
+    </style>
 </head>
 <body>
+
     <div class="container">
-        <header>
-            <div class="profile-pic"></div>
-            <h1>@TwojaNazwa</h1>
-            <p>Twórca / Designer / Twoje info</p>
-        </header>
+        <div class="profile-img"></div>
+        <h1>TWOJA NAZWA</h1>
+        <p>Sprawdź moje linki poniżej 👇</p>
 
         <div class="links">
-            <a href="https://instagram.com/twoj-profil" class="link-card">Instagram</a>
-            <a href="https://tiktok.com/@twoj-profil" class="link-card">TikTok</a>
-            <a href="https://youtube.com/twoj-kanal" class="link-card">YouTube</a>
-            <a href="https://twoja-strona.pl" class="link-card">Moja Strona</a>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+            <a href="https://tiktok.com" class="link main">TIKTOK 🔥
